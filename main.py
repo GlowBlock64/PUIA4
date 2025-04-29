@@ -43,7 +43,6 @@ val_dataset = EmotionDataset(val_encodings, val_labels)
 mini_train_dataset = EmotionDataset(train_encodings, train_labels[:2000])
 mini_val_dataset = EmotionDataset(val_encodings, val_labels[:500])
 
-
 model = BertForSequenceClassification.from_pretrained("bert-base-uncased", num_labels=6)
 
 training_args = TrainingArguments(
@@ -54,6 +53,7 @@ training_args = TrainingArguments(
     logging_dir="./logs",
     logging_steps=10,
     disable_tqdm=False,
+    report_to="none"
 )
 
 trainer = Trainer(
